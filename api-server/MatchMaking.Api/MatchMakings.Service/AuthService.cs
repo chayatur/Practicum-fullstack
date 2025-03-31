@@ -52,9 +52,9 @@ namespace MatchMakings.Service.Services
 
             BaseUser user;
 
-            switch (registerDto.Role.ToLowerInvariant())
+            switch (registerDto.Role)
             {
-                case "matchmaker":
+                case BaseUser.ERole.MatchMaker:
                     user = new MatchMaker
                     {
                         FirstName = registerDto.FirstName,
@@ -65,7 +65,7 @@ namespace MatchMakings.Service.Services
                     };
                     break;
 
-                case "male":
+                case BaseUser.ERole.Male:
                     user = new Male
                     {
                         FirstName = registerDto.FirstName,
@@ -76,7 +76,7 @@ namespace MatchMakings.Service.Services
                     };
                     break;
 
-                case "female": // שונה מ-"women" ל-"female"
+                case BaseUser.ERole.Women: // שונה מ-"women" ל-"female"
                     user = new Women
                     {
                         FirstName = registerDto.FirstName,

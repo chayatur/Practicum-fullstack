@@ -17,7 +17,7 @@ public class UploadController : ControllerBase
     private readonly IMaleService _maleService;
     private readonly IWomenService _femaleService;
     private readonly IAmazonS3 _s3Client;
-    private const string BucketName = "resumesbuc";//or resumebuc
+    private const string BucketName = "resumesbuc";
 
     public UploadController(IMaleService maleService, IWomenService femaleService, IAmazonS3 s3Client)
     {

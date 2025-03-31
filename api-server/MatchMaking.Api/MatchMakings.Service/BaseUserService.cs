@@ -38,8 +38,8 @@ namespace MatchMakings.Service
                 LastName = registerDto.LastName,
                 Username = registerDto.Username,
                 Password = registerDto.Password, // יש לשקול להשתמש בהצפנה
-                Role = (BaseUser.ERole)Enum.Parse(typeof(BaseUser.ERole), registerDto.Role, true)
-            };
+                Role = registerDto.Role,
+            }; 
 
             return await _userRepository.AddUserAsync(user);
         }

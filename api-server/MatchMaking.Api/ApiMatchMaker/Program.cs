@@ -13,10 +13,17 @@ using Microsoft.IdentityModel.Logging;
 using MatchMakings.Service.Services;
 using AutoMapper;
 using MatchMakings.Core;
+using DotNetEnv;
+using Amazon.S3;
+
 IdentityModelEventSource.ShowPII = true;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
+Env.Load();
 // Add services to the container.
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddAWSService<IAmazonS3>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

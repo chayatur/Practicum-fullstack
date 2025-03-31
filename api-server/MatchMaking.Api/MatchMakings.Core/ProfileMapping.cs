@@ -14,7 +14,7 @@ namespace MatchMakings.Core
         public ProfileMapping()
         {
             CreateMap<RegisterDTO, BaseUser>()
-                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => Enum.Parse<BaseUser.ERole>(src.Role, true)));
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
 
             CreateMap<LoginDTO, BaseUser>();
 

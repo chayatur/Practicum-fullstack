@@ -63,7 +63,8 @@ namespace ApiMatchMaker.Controllers
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
                 Username = registerDto.Username,
-                //PasswordHash = HashPassword(registerDto.Password),
+                Password=registerDto.Password,
+                PasswordHash = HashPassword(registerDto.Password),
                 Role = BaseUser.ERole.Male
             };
 
@@ -86,7 +87,8 @@ namespace ApiMatchMaker.Controllers
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
                 Username = registerDto.Username,
-               // PasswordHash = HashPassword(registerDto.Password),
+                Password = registerDto.Password,    
+               PasswordHash = HashPassword(registerDto.Password),
                 Role = BaseUser.ERole.Women
             };
 
@@ -95,11 +97,10 @@ namespace ApiMatchMaker.Controllers
 
             return Ok(new { Token = token, Message = "נרשמת בהצלחה!", User = newUser });
         }
-        //BCrypt לא מיבא טוב את 
-        //private string HashPassword(string password)
-        //{
-        //    return BCrypt.Net.BCrypt.HashPassword(password);
-        //}
+        private string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
 
         [HttpGet("admin-only")]
         [Authorize(Policy = "AdminOnly")]

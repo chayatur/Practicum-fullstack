@@ -15,7 +15,7 @@ const LoginForm = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: any) => {
         console.log(data);
         // כאן תוכל להוסיף את הלוגיקה להתחברות לשרת
     };
